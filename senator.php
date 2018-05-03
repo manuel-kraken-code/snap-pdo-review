@@ -32,9 +32,9 @@ class sanator {
 
 	/**
 	 * senatorsLives
-	 * @var string $senatorLives
+	 * @var string $senatorNumLives
 	 **/
-	protected $senatorLives;
+	protected $senatorNumLives;
 
 
 	/**
@@ -46,9 +46,9 @@ class sanator {
 	 **/
 	public function insert(\PDO $pdo): void {
 
-		$query = "INSERT INTO senator(senatorId, senatorName, senatorLives) VALUES(:senatorId, :senatorName,:senatorLives)";
+		$query = "INSERT INTO senator(senatorId, senatorName, senatorNumLives) VALUES(:senatorId, :senatorName,:senatorNumLives)";
 		$statement = $pdo->prepare($query);
-		$parameters = ["personaId" => $this->senatorId->getBytes(), "senatorName" => $this->senatorName, "senatorLives" => $this->senatorLives];
+		$parameters = ["personaId" => $this->senatorId->getBytes(), "senatorName" => $this->senatorName, "senatorNumLives" => $this->senatorNumLives];
 		$statement->execute($parameters);
 	}
 
@@ -58,7 +58,7 @@ class sanator {
 		// create query template
 		$query = "DELETE FROM senator WHERE senatorId = :senatorId";
 		$statement = $pdo->prepare($query);
-		$parameters = ["senatorId" => $this->senatorId->getBytes(), "senatorName" => $this->senatorName, "senatorLives" => $this->senatorLives];
+		$parameters = ["senatorId" => $this->senatorId->getBytes(), "senatorName" => $this->senatorName, "senatorNumLives" => $this->senatorNumLives];
 		$statement->execute($parameters);
 	}
 
@@ -66,10 +66,10 @@ class sanator {
 	public function update(\PDO $pdo): void {
 
 // create query template
-		$query = "UPDATE senator SET senatorId = :senatorId, senatorName = :senatorName, senatorLives = :senatorLives, WHERE senatorId = :senatorId";
+		$query = "UPDATE senator SET senatorId = :senatorId, senatorName = :senatorName, senatorNumLives = :senatorNumLives, WHERE senatorId = :senatorId";
 		$statement = $pdo->prepare($query);
 
-		$parameters = ["senatorId" => $this->senatorId->getBytes(), "senatorName" => $this->senatorName, "senatorLives" => $this->senatorLives];
+		$parameters = ["senatorId" => $this->senatorId->getBytes(), "senatorName" => $this->senatorName, "senatorNumLives" => $this->senatorNumLives];
 		$statement->execute($parameters);
 	}
 }
